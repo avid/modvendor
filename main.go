@@ -68,7 +68,7 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		if line[0] == 35 {
+		if line[0] == 35 && line[1] != 35 {
 			s := strings.Split(line, " ")
 
 			mod = &Mod{
@@ -91,7 +91,7 @@ func main() {
 
 			if _, err := os.Stat(mod.Dir); os.IsNotExist(err) {
 				fmt.Printf("Error! %q module path does not exist, check $GOPATH/pkg/mod\n", mod.Dir)
-				os.Exit(1)
+				//os.Exit(1)
 			}
 
 			// Build list of files to module path source to project vendor folder
